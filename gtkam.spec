@@ -19,7 +19,7 @@ URL:		http://www.gphoto.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 %{?with_bonobo:BuildRequires:	bonobo-activation-devel}
-%{?with_gimp:BuildRequires:	gimp-devel >= 2.0}
+%{?with_gimp:BuildRequires:	gimp-devel >= 1:2.0}
 BuildRequires:	gtk+2-devel
 BuildRequires:	intltool
 %{?with_bonobo:BuildRequires:	libbonoboui-devel}
@@ -46,7 +46,7 @@ Summary:	GIMP plug-in for direct digital camera through gphoto2
 Summary(pl):	Wtyczka GIMPa pozwalaj±ca na dostêp do aparatów cyfrowych przez gphoto2
 Group:		X11/Applications/Graphics
 Requires:	%{name} = %{version}
-Requires:	gimp >= 2.0
+Requires:	gimp >= 1:2.0
 
 %description -n gimp-plugin-gtkam
 GIMP plug-in for direct digital camera through gphoto2.
