@@ -8,17 +8,18 @@ Summary:	GTKam - graphical frontend for gphoto2
 Summary(pl):	GTKam - graficzny interfejs do gphoto2
 Name:		gtkam
 Version:	0.1.10
-Release:	11
+Release:	12
 License:	LGPL
 Group:		X11/Applications/Graphics
 Source0:	http://dl.sourceforge.net/gphoto/%{name}-%{version}.tar.bz2
 # Source0-md5:	91f342aba0f6161c334ab5a8c74795cb
 Patch0:		%{name}-paths.patch
+Patch1:		%{name}-gimp2.patch
 URL:		http://www.gphoto.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 %{?with_bonobo:BuildRequires:	bonobo-activation-devel}
-%{?with_gimp:BuildRequires:	gimp-devel >= 1.3.23}
+%{?with_gimp:BuildRequires:	gimp-devel >= 2.0}
 BuildRequires:	gtk+2-devel
 BuildRequires:	intltool
 %{?with_bonobo:BuildRequires:	libbonoboui-devel}
@@ -45,7 +46,7 @@ Summary:	GIMP plug-in for direct digital camera through gphoto2
 Summary(pl):	Wtyczka GIMPa pozwalaj±ca na dostêp do aparatów cyfrowych przez gphoto2
 Group:		X11/Applications/Graphics
 Requires:	%{name} = %{version}
-Requires:	gimp >= 1.3
+Requires:	gimp >= 2.0
 
 %description -n gimp-plugin-gtkam
 GIMP plug-in for direct digital camera through gphoto2.
@@ -56,7 +57,8 @@ gphoto2.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
+%patch1 -p1
 
 %build
 rm -f missing
