@@ -27,8 +27,6 @@ BuildRequires:	pkgconfig
 Requires:	libgphoto2 >= 2.1.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix		/usr/X11R6
-%define		_mandir		%{_prefix}/man
 
 %description
 The gtkam package provides a gtk-based frontend to gphoto2.
