@@ -21,7 +21,6 @@ Patch4:		%{name}-doc.patch
 URL:		http://www.gphoto.org/proj/gtkam/
 BuildRequires:	autoconf
 BuildRequires:	automake
-%{?with_bonobo:BuildRequires:	bonobo-activation-devel}
 %{?with_gimp:BuildRequires:	gimp-devel >= 1:2.0}
 BuildRequires:	gnome-common
 BuildRequires:	gtk+2-devel
@@ -71,7 +70,6 @@ gphoto2.
 mv po/{no,nb}.po
 
 %build
-rm -f missing
 intltoolize --copy --force
 glib-gettextize --copy --force
 gnome-doc-common --copy
@@ -97,8 +95,8 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post -p /usr/bin/scrollkeeper-update
-%postun -p /usr/bin/scrollkeeper-update
+%post	-p /usr/bin/scrollkeeper-update
+%postun	-p /usr/bin/scrollkeeper-update
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
