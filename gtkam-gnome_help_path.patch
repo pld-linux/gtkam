@@ -1,0 +1,12 @@
+diff -urN aa/gtkam-0.1.11/configure.in gtkam-0.1.11/configure.in
+--- aa/gtkam-0.1.11/configure.in	2004-03-06 23:35:26.000000000 +0100
++++ gtkam-0.1.11/configure.in	2004-03-21 13:41:52.907695672 +0100
+@@ -82,7 +82,7 @@
+ dnl omf/scrollkeper/gnome-style docs
+ dnl ---------------------------------------------------------------------------
+ 
+-GTKAM_C_IDENTIFIER="file:/usr/local/share/gnome/help/gtkam/C/gtkam.xml"
++GTKAM_C_IDENTIFIER="file:/usr/share/gnome/help/gtkam/C/gtkam.xml"
+ AC_SUBST(GTKAM_C_IDENTIFIER)
+ 
+ dnl ---------------------------------------------------------------------------
