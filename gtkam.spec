@@ -56,8 +56,8 @@ gphoto2.
 %{__autoconf}
 %{__automake}
 %configure \
-	--without-bonobo \
-	--without-gnome \
+	%{!?_with_bonobo:--without-bonobo} \
+	%{!?_with_gnome:--without-gnome} \
 	%{?_without_gimp:--without-gimp}
 
 %{__make}
