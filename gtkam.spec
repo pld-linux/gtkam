@@ -7,31 +7,36 @@
 Summary:	GTKam - graphical frontend for gphoto2
 Summary(pl):	GTKam - graficzny interfejs do gphoto2
 Name:		gtkam
-Version:	0.1.10
-Release:	12
+Version:	0.1.11
+Release:	1
 License:	LGPL
 Group:		X11/Applications/Graphics
-Source0:	http://dl.sourceforge.net/gphoto/%{name}-%{version}.tar.bz2
-# Source0-md5:	91f342aba0f6161c334ab5a8c74795cb
+Source0:	http://dl.sourceforge.net/gphoto/%{name}-%{version}.tar.gz
+# Source0-md5:	084e90e73179e9cac6664fd1b30e86d8
 Patch0:		%{name}-paths.patch
 Patch1:		%{name}-gimp2.patch
-URL:		http://www.gphoto.org/
+Patch2:		%{name}-locale-names.patch
+Patch3:		%{name}-enable_deprecated.patch
+Patch4:		%{name}-gnome_help_path.patch
+URL:		http://www.gphoto.org/proj/gtkam/
 BuildRequires:	autoconf
 BuildRequires:	automake
 %{?with_bonobo:BuildRequires:	bonobo-activation-devel}
 %{?with_gimp:BuildRequires:	gimp-devel >= 1:2.0}
+BuildRequires:	gnome-common
 BuildRequires:	gtk+2-devel
 BuildRequires:	intltool
 %{?with_bonobo:BuildRequires:	libbonoboui-devel}
 BuildRequires:	libexif-gtk-devel >= 0.3.2
 %{?with_gnome:BuildRequires:	libgnomeui-devel}
-BuildRequires:	libgphoto2-devel >= 2.1.1
+BuildRequires:	libgphoto2-devel >= 2.1.4
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
-Requires:	libgphoto2 >= 2.1.1
+BuildRequires:	scrollkeeper
+Requires:	libgphoto2 >= 2.1.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%if %{?with_gimp}
+%if %{with gimp}
 %define		gimpplugindir	%(gimptool --gimpplugindir)/plug-ins
 %endif
 
@@ -45,7 +50,7 @@ Pakiet gtkam udostêpnia oparty o gtk graficzny interfejs do gphoto2.
 Summary:	GIMP plug-in for direct digital camera through gphoto2
 Summary(pl):	Wtyczka GIMPa pozwalaj±ca na dostêp do aparatów cyfrowych przez gphoto2
 Group:		X11/Applications/Graphics
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 Requires:	gimp >= 1:2.0
 
 %description -n gimp-plugin-gtkam
@@ -59,11 +64,17 @@ gphoto2.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+
+mv po/{no,nb}.po
 
 %build
 rm -f missing
 intltoolize --copy --force
 glib-gettextize --copy --force
+gnome-doc-common --copy
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
@@ -86,14 +97,20 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post -p /usr/bin/scrollkeeper-update
+%postun -p /usr/bin/scrollkeeper-update
+
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README TODO
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
 %{_mandir}/man1/*.1*
+%{_desktopdir}/*
+%{_pixmapsdir}/*
+%{_omf_dest_dir}/%{name}
 
-%if %{?with_gimp}
+%if %{with gimp}
 %files -n gimp-plugin-gtkam
 %defattr(644,root,root,755)
 %attr(755,root,root) %{gimpplugindir}/gtkam-gimp
