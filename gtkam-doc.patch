@@ -1,0 +1,20 @@
+diff -urN aa/gtkam-0.1.12/help/C/gtkam.xml gtkam-0.1.12/help/C/gtkam.xml
+--- aa/gtkam-0.1.12/help/C/gtkam.xml	2004-04-27 12:38:53.000000000 +0200
++++ gtkam-0.1.12/help/C/gtkam.xml	2004-06-09 17:26:58.194164552 +0200
+@@ -183,7 +183,7 @@
+     		then press <keycap>Return</keycap>:</para>
+     		<para> 
+ 			<command>gtkam</command> 
+-			<!--FIXME comand line --switches -->
++			<!--FIXME comand line \-\-switches -->
+     		</para> 
+     		</listitem>
+     	</varlistentry>
+@@ -204,6 +204,7 @@
+ 	    </imageobject>
+ 	    <textobject> 
+ 	      <phrase>The &app; main window. On the left is the camera tree. The file list is on the right.
++        </phrase>
+ 	    </textobject> 
+ 	  </mediaobject> 
+ 	</screenshot> 
