@@ -9,9 +9,9 @@
 --- gtkam-0.1.10/src/Makefile.am.orig	Sun Dec  1 22:52:11 2002
 +++ gtkam-0.1.10/src/Makefile.am	Sat Jan 11 12:46:54 2003
 @@ -2,7 +2,7 @@
- 
  INCLUDES =					\
   -I$(top_srcdir)/intl				\
+  -W -Wall -Wno-unused -pedantic			\
 - -DIMAGE_DIR=\"$(datadir)/images/gtkam\" 	\
 + -DIMAGE_DIR=\"$(datadir)/gtkam/images\" 	\
   -DGTKAM_LOCALEDIR=\"$(datadir)/locale\"	\
