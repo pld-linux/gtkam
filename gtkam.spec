@@ -11,7 +11,7 @@ Version:	0.1.10
 Release:	1
 License:	LGPL
 Group:		X11/Applications/Graphics
-Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/gphoto/%{name}-%{version}.tar.bz2
+Source0:	http://dl.sourceforge.net/gphoto/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-paths.patch
 URL:		http://www.gphoto.net/
 BuildRequires:	autoconf
