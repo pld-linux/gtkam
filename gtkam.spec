@@ -19,10 +19,12 @@ BuildRequires:	automake
 %{?_with_bonobo:BuildRequires:	bonobo-activation-devel}
 %{!?_without_gimp:BuildRequires:	gimp-devel >= 1.3}
 BuildRequires:	gtk+2-devel
+BuildRequires:	intltool
 %{?_with_bonobo:BuildRequires:	libbonoboui-devel}
 BuildRequires:	libexif-gtk-devel >= 0.3.2
 %{?_with_gnome:BuildRequires:	libgnomeui-devel}
 BuildRequires:	libgphoto2-devel >= 2.1.1
+BuildRequires:	libtool
 BuildRequires:	pkgconfig
 Requires:	libgphoto2 >= 2.1.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
