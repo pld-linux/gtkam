@@ -1,14 +1,14 @@
 #
 # Conditional build:
-# _with_bonobo	- use bonobo
-# _with_gnome	- use GNOME to display documentation
-# _without_gimp	- don't build GIMP plugin
+%bcond_without bonobo	# don't use bonobo
+%bcond_without gnome	# don't use GNOME to display documentation
+%bcond_without gimp	# don't build GIMP plugin
 #
 Summary:	GTKam - graphical frontend for gphoto2
 Summary(pl):	GTKam - graficzny interfejs do gphoto2
 Name:		gtkam
 Version:	0.1.10
-Release:	10
+Release:	11
 License:	LGPL
 Group:		X11/Applications/Graphics
 Source0:	http://dl.sourceforge.net/gphoto/%{name}-%{version}.tar.bz2
@@ -17,20 +17,20 @@ Patch0:		%{name}-paths.patch
 URL:		http://www.gphoto.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
-%{?_with_bonobo:BuildRequires:	bonobo-activation-devel}
-%{!?_without_gimp:BuildRequires:	gimp-devel >= 1.3.23}
+%{?with_bonobo:BuildRequires:	bonobo-activation-devel}
+%{?with_gimp:BuildRequires:	gimp-devel >= 1.3.23}
 BuildRequires:	gtk+2-devel
 BuildRequires:	intltool
-%{?_with_bonobo:BuildRequires:	libbonoboui-devel}
+%{?with_bonobo:BuildRequires:	libbonoboui-devel}
 BuildRequires:	libexif-gtk-devel >= 0.3.2
-%{?_with_gnome:BuildRequires:	libgnomeui-devel}
+%{?with_gnome:BuildRequires:	libgnomeui-devel}
 BuildRequires:	libgphoto2-devel >= 2.1.1
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 Requires:	libgphoto2 >= 2.1.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%if 0%{!?_without_gimp:1}
+%if %{?with_gimp}
 %define		gimpplugindir	%(gimptool --gimpplugindir)/plug-ins
 %endif
 
@@ -67,9 +67,9 @@ glib-gettextize --copy --force
 %{__autoconf}
 %{__automake}
 %configure \
-	%{!?_with_bonobo:--without-bonobo} \
-	%{!?_with_gnome:--without-gnome} \
-	%{?_without_gimp:--without-gimp}
+	%{?without_bonobo:--without-bonobo} \
+	%{?without_gnome:--without-gnome} \
+	%{?without_gimp:--without-gimp}
 
 %{__make}
 
@@ -91,7 +91,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}
 %{_mandir}/man1/*.1*
 
-%if %{?_without_gimp:0}%{!?_without_gimp:1}
+%if %{?with_gimp}
 %files -n gimp-plugin-gtkam
 %defattr(644,root,root,755)
 %attr(755,root,root) %{gimpplugindir}/gtkam-gimp
