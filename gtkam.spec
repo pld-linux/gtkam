@@ -14,7 +14,7 @@ Group:		X11/Applications/Graphics
 Source0:	http://dl.sourceforge.net/gphoto/%{name}-%{version}.tar.bz2
 # Source0-md5:	91f342aba0f6161c334ab5a8c74795cb
 Patch0:		%{name}-paths.patch
-URL:		http://www.gphoto.net/
+URL:		http://www.gphoto.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 %{?_with_bonobo:BuildRequires:	bonobo-activation-devel}
