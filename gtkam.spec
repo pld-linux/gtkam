@@ -29,6 +29,9 @@ BuildRequires:	pkgconfig
 Requires:	libgphoto2 >= 2.1.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+%if 0%{!?_without_gimp:1}
+%define		gimpplugindir	%(gimp-config --gimpplugindir)/plug-ins
+%endif
 
 %description
 The gtkam package provides a gtk-based frontend to gphoto2.
@@ -89,5 +92,5 @@ rm -rf $RPM_BUILD_ROOT
 %if %{?_without_gimp:0}%{!?_without_gimp:1}
 %files -n gimp-plugin-gtkam
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/gimp/*/plug-ins/gtkam-gimp
+%attr(755,root,root) %{gimpplugindir}/gtkam-gimp
 %endif
