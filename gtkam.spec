@@ -40,10 +40,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %endif
 
 %description
-The gtkam package provides a gtk-based frontend to gphoto2.
+The gtkam package provides a GTK+-based frontend to gphoto2.
 
 %description -l pl
-Pakiet gtkam udostêpnia oparty o gtk graficzny interfejs do gphoto2.
+Pakiet gtkam udostêpnia oparty o GTK+ graficzny interfejs do gphoto2.
 
 %package -n gimp-plugin-gtkam
 Summary:	GIMP plug-in for direct digital camera through gphoto2
