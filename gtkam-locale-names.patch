@@ -6,7 +6,7 @@ diff -urN aa/gtkam-0.1.11/configure.in gtkam-0.1.11/configure.in
  
  dnl Add the languages which your application supports here.
 -ALL_LINGUAS="cs da de es fr hu it ja no pt_BR pt_PT ru sl sv uk"
-+ALL_LINGUAS="cs da de es fr hu it ja nb pt_BR pt_PT ru sl sv uk"
++ALL_LINGUAS="cs da de es fr hu it ja nb pt_BR pt ru sl sv uk"
  AM_GNU_GETTEXT
  
  dnl ---------------------------------------------------------------------------
