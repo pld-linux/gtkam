@@ -1,0 +1,19 @@
+--- gtkam-0.1.10/art/Makefile.am.orig	Sun Dec  1 22:52:11 2002
++++ gtkam-0.1.10/art/Makefile.am	Sat Jan 11 12:46:21 2003
+@@ -1,4 +1,4 @@
+-imagesdir = $(datadir)/images/gtkam
++imagesdir = $(datadir)/gtkam/images
+ images_DATA =			\
+ 	gtkam-audio.png		\
+ 	gtkam-camera.png        \
+--- gtkam-0.1.10/src/Makefile.am.orig	Sun Dec  1 22:52:11 2002
++++ gtkam-0.1.10/src/Makefile.am	Sat Jan 11 12:46:54 2003
+@@ -2,7 +2,7 @@
+ 
+ INCLUDES =					\
+  -I$(top_srcdir)/intl				\
+- -DIMAGE_DIR=\"$(datadir)/images/gtkam\" 	\
++ -DIMAGE_DIR=\"$(datadir)/gtkam/images\" 	\
+  -DGTKAM_LOCALEDIR=\"$(datadir)/locale\"	\
+  -DPACKAGE_DATA_DIR=\"$(datadir)/gtkam\"	\
+  -DPACKAGE_SOURCE_DIR=\"$(top_srcdir)\"		\
