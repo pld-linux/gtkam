@@ -52,6 +52,10 @@ gphoto2.
 %patch -p1
 
 %build
+rm -f missing
+intltoolize --copy --force
+glib-gettextize --copy --force
+%{__libtoolize}
 %{__aclocal}
 %{__autoconf}
 %{__automake}
@@ -68,7 +72,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%find_lang %{name}
+%find_lang %{name} --with-gnome --all-name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -83,5 +87,5 @@ rm -rf $RPM_BUILD_ROOT
 %if %{?_without_gimp:0}%{!?_without_gimp:1}
 %files -n gimp-plugin-gtkam
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/gimp/*/plug-ins/gtkam
+%attr(755,root,root) %{_libdir}/gimp/*/plug-ins/gtkam-gimp
 %endif
