@@ -21,6 +21,7 @@ Patch4:		%{name}-doc.patch
 URL:		http://www.gphoto.org/proj/gtkam/
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	gettext-devel
 %{?with_gimp:BuildRequires:	gimp-devel >= 1:2.0}
 BuildRequires:	gnome-common
 BuildRequires:	gtk+2-devel
