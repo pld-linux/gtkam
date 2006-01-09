@@ -6,14 +6,14 @@
  images_DATA =			\
  	gtkam-audio.png		\
  	gtkam-camera.png        \
---- gtkam-0.1.10/src/Makefile.am.orig	Sun Dec  1 22:52:11 2002
-+++ gtkam-0.1.10/src/Makefile.am	Sat Jan 11 12:46:54 2003
-@@ -2,7 +2,7 @@
- INCLUDES =					\
-  -I$(top_srcdir)/intl				\
-  -W -Wall -Wno-unused -pedantic			\
-- -DIMAGE_DIR=\"$(datadir)/images/gtkam\" 	\
-+ -DIMAGE_DIR=\"$(datadir)/gtkam/images\" 	\
-  -DGTKAM_LOCALEDIR=\"$(datadir)/locale\"	\
-  -DPACKAGE_DATA_DIR=\"$(datadir)/gtkam\"	\
-  -DPACKAGE_SOURCE_DIR=\"$(top_srcdir)\"		\
+--- gtkam-0.1.13/configure.in.orig	2005-12-31 00:25:32.000000000 +0100
++++ gtkam-0.1.13/configure.in	2006-01-09 13:10:38.000000000 +0100
+@@ -206,7 +206,7 @@
+ dnl Define application directories
+ dnl ---------------------------------------------------------------------------
+ 
+-AM_CPPFLAGS="$AM_CPPFLAGS -DIMAGE_DIR=\\\"\$(datadir)/images/gtkam\\\""
++AM_CPPFLAGS="$AM_CPPFLAGS -DIMAGE_DIR=\\\"\$(datadir)/gtkam/images\\\""
+ # These don't seem to be used
+ # AM_CPPFLAGS="$AM_CPPFLAGS -DPACKAGE_DATA_DIR=\\\"\$(datadir)/gtkam\\\""
+ # AM_CPPFLAGS="$AM_CPPFLAGS -DPACKAGE_SOURCE_DIR=\\\"\$(top_srcdir)\\\""
