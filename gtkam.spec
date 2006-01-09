@@ -7,24 +7,21 @@
 Summary:	GTKam - graphical frontend for gphoto2
 Summary(pl):	GTKam - graficzny interfejs do gphoto2
 Name:		gtkam
-Version:	0.1.12
-Release:	5
+Version:	0.1.13
+Release:	1
 License:	LGPL
 Group:		X11/Applications/Graphics
-Source0:	http://dl.sourceforge.net/gphoto/%{name}-%{version}.tar.gz
-# Source0-md5:	622170d414718a5ae11487a6af1e47cd
+Source0:	http://dl.sourceforge.net/gphoto/%{name}-%{version}.tar.bz2
+# Source0-md5:	a22e6f14405ed4b282757de6247019fe
 Patch0:		%{name}-paths.patch
-Patch1:		%{name}-gimp2.patch
-Patch2:		%{name}-locale-names.patch
-Patch3:		%{name}-gnome_help_path.patch
-Patch4:		%{name}-doc.patch
+Patch1:		%{name}-locale-names.patch
 URL:		http://www.gphoto.org/proj/gtkam/
-BuildRequires:	autoconf
-BuildRequires:	automake
-BuildRequires:	gettext-devel
+BuildRequires:	autoconf >= 2.59
+BuildRequires:	automake >= 1:1.8
+BuildRequires:	gettext-devel >= 0.14.1
 %{?with_gimp:BuildRequires:	gimp-devel >= 1:2.0}
 BuildRequires:	gnome-common
-BuildRequires:	gtk+2-devel
+BuildRequires:	gtk+2-devel >= 2.0.0
 BuildRequires:	intltool
 %{?with_bonobo:BuildRequires:	libbonoboui-devel}
 BuildRequires:	libexif-gtk-devel >= 0.3.2
@@ -64,19 +61,16 @@ gphoto2.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
-mv -f po/{no,nb}.po
 mv -f po/{pt_PT,pt}.po
+rm -f po/stamp-po
 
 %build
-intltoolize --copy --force
-glib-gettextize --copy --force
-gnome-doc-common --copy
+%{__intltoolize}
+%{__gettextize}
+%{__gnome_doc_common}
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4m
 %{__autoconf}
 %{__automake}
 %configure \
