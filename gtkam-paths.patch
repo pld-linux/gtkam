@@ -6,8 +6,8 @@
  images_DATA =			\
  	gtkam-audio.png		\
  	gtkam-camera.png        \
---- gtkam-0.1.13/configure.in.orig	2005-12-31 00:25:32.000000000 +0100
-+++ gtkam-0.1.13/configure.in	2006-01-09 13:10:38.000000000 +0100
+--- gtkam-0.1.14/configure.ac.orig	2005-12-31 00:25:32.000000000 +0100
++++ gtkam-0.1.14/configure.ac	2006-01-09 13:10:38.000000000 +0100
 @@ -206,7 +206,7 @@
  dnl Define application directories
  dnl ---------------------------------------------------------------------------
