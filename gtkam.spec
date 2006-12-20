@@ -16,6 +16,7 @@ Source0:	http://dl.sourceforge.net/gphoto/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-paths.patch
 Patch1:		%{name}-locale-names.patch
 Patch2:		%{name}-ac.patch
+Patch3:		%{name}-link.patch
 URL:		http://www.gphoto.org/proj/gtkam/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
@@ -23,9 +24,9 @@ BuildRequires:	gettext-devel >= 0.14.1
 %{?with_gimp:BuildRequires:	gimp-devel >= 1:2.0}
 BuildRequires:	gnome-common
 BuildRequires:	gtk+2-devel >= 2.0.0
-BuildRequires:	intltool
 %{?with_bonobo:BuildRequires:	libbonoboui-devel}
-BuildRequires:	libexif-gtk-devel >= 0.3.2
+BuildRequires:	libexif-devel >= 0.3.2
+BuildRequires:	libexif-gtk-devel
 %{?with_gnome:BuildRequires:	libgnomeui-devel}
 BuildRequires:	libgphoto2-devel >= 2.3.0
 BuildRequires:	libtool
@@ -63,12 +64,12 @@ gphoto2.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 mv -f po/{pt_PT,pt}.po
 rm -f po/stamp-po
 
 %build
-%{__intltoolize}
 %{__gettextize}
 %{__gnome_doc_common}
 %{__libtoolize}
