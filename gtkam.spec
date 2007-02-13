@@ -5,7 +5,7 @@
 %bcond_without	gimp	# don't build GIMP plugin
 #
 Summary:	GTKam - graphical frontend for gphoto2
-Summary(pl.UTF-8):   GTKam - graficzny interfejs do gphoto2
+Summary(pl.UTF-8):	GTKam - graficzny interfejs do gphoto2
 Name:		gtkam
 Version:	0.1.14
 Release:	1
@@ -47,7 +47,7 @@ Pakiet gtkam udostępnia oparty o GTK+ graficzny interfejs do gphoto2.
 
 %package -n gimp-plugin-gtkam
 Summary:	GIMP plug-in for direct digital camera through gphoto2
-Summary(pl.UTF-8):   Wtyczka GIMPa pozwalająca na dostęp do aparatów cyfrowych przez gphoto2
+Summary(pl.UTF-8):	Wtyczka GIMPa pozwalająca na dostęp do aparatów cyfrowych przez gphoto2
 Group:		X11/Applications/Graphics
 Requires:	%{name} = %{version}-%{release}
 Requires:	gimp >= 1:2.0
