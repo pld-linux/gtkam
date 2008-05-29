@@ -7,16 +7,16 @@
 Summary:	GTKam - graphical frontend for gphoto2
 Summary(pl.UTF-8):	GTKam - graficzny interfejs do gphoto2
 Name:		gtkam
-Version:	0.1.14
-Release:	2
-License:	LGPL
+Version:	0.1.15
+Release:	1
+License:	LGPL v2+
 Group:		X11/Applications/Graphics
 Source0:	http://dl.sourceforge.net/gphoto/%{name}-%{version}.tar.bz2
-# Source0-md5:	2b6e6fea0bc55d9f78952f0061d7ef7e
+# Source0-md5:	ca0f3087e02f57656658da9b30c06906
 Patch0:		%{name}-paths.patch
-Patch1:		%{name}-locale-names.patch
-Patch2:		%{name}-ac.patch
-Patch3:		%{name}-link.patch
+Patch1:		%{name}-ac.patch
+Patch2:		%{name}-link.patch
+Patch3:		%{name}-am.patch
 URL:		http://www.gphoto.org/proj/gtkam/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
@@ -28,11 +28,12 @@ BuildRequires:	gtk+2-devel >= 2.0.0
 BuildRequires:	libexif-devel >= 0.3.2
 BuildRequires:	libexif-gtk-devel
 %{?with_gnome:BuildRequires:	libgnomeui-devel}
-BuildRequires:	libgphoto2-devel >= 2.3.0
+BuildRequires:	libgphoto2-devel >= 2.4.1
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	scrollkeeper
-Requires:	libgphoto2 >= 2.3.0
+Requires:	libgphoto2 >= 2.4.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %if %{with gimp}
@@ -66,9 +67,6 @@ gphoto2.
 %patch2 -p1
 %patch3 -p1
 
-mv -f po/{pt_PT,pt}.po
-rm -f po/stamp-po
-
 %build
 %{__gettextize}
 %{__gnome_doc_common}
@@ -89,7 +87,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%find_lang %{name} --with-gnome --all-name
+%find_lang %{name} --with-gnome --with-omf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -100,11 +98,11 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README TODO
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/gtkam
 %{_datadir}/%{name}
-%{_mandir}/man1/*.1*
-%{_desktopdir}/*.desktop
-%{_pixmapsdir}/*
+%{_mandir}/man1/gtkam.1*
+%{_desktopdir}/gtkam.desktop
+%{_pixmapsdir}/gtkam.png
 %{_omf_dest_dir}/%{name}
 
 %if %{with gimp}
