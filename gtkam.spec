@@ -7,16 +7,14 @@
 Summary:	GTKam - graphical frontend for gphoto2
 Summary(pl.UTF-8):	GTKam - graficzny interfejs do gphoto2
 Name:		gtkam
-Version:	0.1.15
+Version:	0.1.16.1
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications/Graphics
 Source0:	http://dl.sourceforge.net/gphoto/%{name}-%{version}.tar.bz2
-# Source0-md5:	ca0f3087e02f57656658da9b30c06906
+# Source0-md5:	0b76a503aa87d892280044bd546a1fad
 Patch0:		%{name}-paths.patch
-Patch1:		%{name}-ac.patch
 Patch2:		%{name}-link.patch
-Patch3:		%{name}-am.patch
 URL:		http://www.gphoto.org/proj/gtkam/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
@@ -30,6 +28,7 @@ BuildRequires:	libexif-gtk-devel
 %{?with_gnome:BuildRequires:	libgnomeui-devel}
 BuildRequires:	libgphoto2-devel >= 2.4.1
 BuildRequires:	libtool
+%{?with_gimp:BuildRequires:	libusb-devel >= 0.1.11}
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	scrollkeeper
@@ -63,12 +62,11 @@ gphoto2.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 %build
 %{__gettextize}
+%{__intltoolize}
 %{__gnome_doc_common}
 %{__libtoolize}
 %{__aclocal} -I m4m
@@ -97,12 +95,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog README TODO
+%doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_bindir}/gtkam
 %{_datadir}/%{name}
 %{_mandir}/man1/gtkam.1*
 %{_desktopdir}/gtkam.desktop
-%{_pixmapsdir}/gtkam.png
+%{_pixmapsdir}/gtkam*.png
 %{_omf_dest_dir}/%{name}
 
 %if %{with gimp}
