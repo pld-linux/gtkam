@@ -22,6 +22,7 @@ BuildRequires:	gettext-devel >= 0.14.1
 %{?with_gimp:BuildRequires:	gimp-devel >= 1:2.0}
 BuildRequires:	gnome-common
 BuildRequires:	gtk+2-devel >= 2.0.0
+BuildRequires:	intltool
 %{?with_bonobo:BuildRequires:	libbonoboui-devel}
 BuildRequires:	libexif-devel >= 0.3.2
 BuildRequires:	libexif-gtk-devel
