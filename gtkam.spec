@@ -28,7 +28,7 @@ BuildRequires:	libexif-gtk-devel
 %{?with_gnome:BuildRequires:	libgnomeui-devel}
 BuildRequires:	libgphoto2-devel >= 2.4.1
 BuildRequires:	libtool
-%{?with_gimp:BuildRequires:	libusb-devel >= 0.1.11}
+%{?with_gimp:BuildRequires:	libusb-compat-devel}
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	scrollkeeper
