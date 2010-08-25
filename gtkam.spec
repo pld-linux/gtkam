@@ -7,14 +7,13 @@
 Summary:	GTKam - graphical frontend for gphoto2
 Summary(pl.UTF-8):	GTKam - graficzny interfejs do gphoto2
 Name:		gtkam
-Version:	0.1.16.1
+Version:	0.1.17
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications/Graphics
 Source0:	http://dl.sourceforge.net/gphoto/%{name}-%{version}.tar.bz2
-# Source0-md5:	0b76a503aa87d892280044bd546a1fad
+# Source0-md5:	b62f100e02a949c7bc875fdeff85fcc9
 Patch0:		%{name}-paths.patch
-Patch2:		%{name}-link.patch
 URL:		http://www.gphoto.org/proj/gtkam/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
@@ -27,7 +26,7 @@ BuildRequires:	intltool
 BuildRequires:	libexif-devel >= 0.3.2
 BuildRequires:	libexif-gtk-devel
 %{?with_gnome:BuildRequires:	libgnomeui-devel}
-BuildRequires:	libgphoto2-devel >= 2.4.1
+BuildRequires:	libgphoto2-devel >= 2.4.0
 BuildRequires:	libtool
 %{?with_gimp:BuildRequires:	libusb-compat-devel}
 BuildRequires:	pkgconfig
@@ -63,7 +62,6 @@ gphoto2.
 %prep
 %setup -q
 %patch0 -p1
-%patch2 -p1
 
 %build
 %{__gettextize}
