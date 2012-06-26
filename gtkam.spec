@@ -11,7 +11,7 @@ Version:	0.1.18
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications/Graphics
-Source0:	http://dl.sourceforge.net/gphoto/%{name}-%{version}.tar.bz2
+Source0:	http://downloads.sourceforge.net/gphoto/%{name}-%{version}.tar.bz2
 # Source0-md5:	ae37003f1f2a8f66e9a03e221d73060c
 Patch0:		%{name}-paths.patch
 URL:		http://www.gphoto.org/proj/gtkam/
