@@ -14,6 +14,7 @@ Group:		X11/Applications/Graphics
 Source0:	http://downloads.sourceforge.net/gphoto/%{name}-%{version}.tar.bz2
 # Source0-md5:	ae37003f1f2a8f66e9a03e221d73060c
 Patch0:		%{name}-paths.patch
+Patch1:		%{name}-link.patch
 URL:		http://www.gphoto.org/proj/gtkam/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
@@ -62,6 +63,7 @@ gphoto2.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__gettextize}
