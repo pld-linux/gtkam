@@ -1,0 +1,10 @@
+--- gtkam-0.1.18/configure.ac~	2013-06-12 18:41:36.041601085 +0200
++++ gtkam-0.1.18/configure.ac	2013-06-12 18:41:57.871823760 +0200
+@@ -32,7 +32,6 @@
+ dnl Some programs we need
+ dnl ---------------------------------------------------------------------------
+ AC_PROG_CC
+-AM_PROG_CC_STDC
+ AC_HEADER_STDC
+ AM_PROG_LIBTOOL
+ AC_PROG_INSTALL

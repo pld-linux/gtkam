@@ -1,0 +1,77 @@
+--- gtkam-0.1.18/src/gtkam-port.c.orig	2008-10-04 16:04:40.000000000 +0200
++++ gtkam-0.1.18/src/gtkam-port.c	2013-06-12 18:44:34.930092331 +0200
+@@ -133,7 +133,6 @@
+ 	GPPortInfoList *list;
+ 	int index;
+ 	const gchar *path;
+-	gchar *msg;
+ 	GtkWidget *d;
+ 
+ 	gp_port_info_list_new (&list);
+@@ -143,10 +142,8 @@
+ 	gp_port_info_list_free (list);
+ 
+ 	if (index < 0) {
+-		msg = g_strdup_printf (_("The port '%s' could not be found. Please make sure "
++		d = gtkam_error_new (index, NULL, GTK_WIDGET (port), _("The port '%s' could not be found. Please make sure "
+ 		        "that the port exists."), path);
+-		d = gtkam_error_new (index, NULL, GTK_WIDGET (port), msg);
+-		g_free (msg);
+ 		gtk_window_set_transient_for (GTK_WINDOW (d),
+ 					      GTK_WINDOW (port));
+ 		gtk_widget_show (d);
+--- gtkam-0.2.0/src/gtkam-save.c~	2010-07-10 11:51:36.000000000 +0200
++++ gtkam-0.2.0/src/gtkam-save.c	2013-06-12 18:46:54.274846517 +0200
+@@ -252,7 +252,7 @@
+ static int
+ save_file (GtkamSave *save, const char *filename, CameraFile *file, CameraFileType type, guint n)
+ {
+-	gchar *full_path, *full_filename, *dirname, *msg, *number_filename;
++	gchar *full_path, *full_filename, *dirname, *number_filename;
+ 	const char *mime_type;
+ 	const gchar *fsel_filename, *fsel_path, *prefix, *suffix;
+ 	GtkWidget *dialog;
+@@ -296,14 +296,12 @@
+ 
+ 	/* FIXME Check which is user, and prompt the user */
+ 	if (!save->priv->quiet && file_exists (full_path)) {
+-		msg = g_strdup_printf (_("The file '%s' already exists."),
+-				       full_path);
+ 		if (!save->priv->err_shown) {
+-			dialog = gtkam_error_new (GP_ERROR_FILE_EXISTS, NULL, GTK_WIDGET (save), msg);
++			dialog = gtkam_error_new (GP_ERROR_FILE_EXISTS, NULL, GTK_WIDGET (save),
++					_("The file '%s' already exists."), full_path);
+ 			gtk_window_set_transient_for (GTK_WINDOW (dialog),
+ 						      save->priv->main_window);
+ 			gtk_widget_show (dialog);
+-			g_free (msg);
+ 			g_free (full_path);
+ 			save->priv->err_shown = TRUE;
+ 		}
+--- gtkam-0.2.0/src/gtkam-tree.c~	2012-07-10 09:08:30.000000000 +0200
++++ gtkam-0.2.0/src/gtkam-tree.c	2013-06-12 18:47:53.498783732 +0200
+@@ -607,7 +607,7 @@
+ tree_save_file (CameraFile *file, const char *dest_path, const char *name,
+ 		GtkWindow *save)
+ {
+-	gchar *full_path, *msg;
++	gchar *full_path;
+ 	GtkWidget *dialog;
+ 	int result;
+ 
+@@ -616,12 +616,11 @@
+ 
+ 	/* FIXME Check which is user, and prompt the user */
+ 	if (file_exists (full_path)) {
+-		msg = g_strdup_printf (_("The file '%s' already exists."),
+-				       full_path);
+ 		dialog = gtkam_error_new (GP_ERROR_FILE_EXISTS, NULL,
+-					  GTK_WIDGET (save), msg);
++					  GTK_WIDGET (save),
++					  _("The file '%s' already exists."),
++					  full_path);
+ 		gtk_widget_show (dialog);
+-		g_free (msg);
+ 		g_free (full_path);
+ 		return -1;
+ 	}
