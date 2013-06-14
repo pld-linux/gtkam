@@ -29,13 +29,13 @@ BuildRequires:	intltool
 BuildRequires:	libexif-devel >= 0.3.2
 BuildRequires:	libexif-gtk-devel
 %{?with_gnome:BuildRequires:	libgnomeui-devel}
-BuildRequires:	libgphoto2-devel >= 2.4.0
+BuildRequires:	libgphoto2-devel >= 2.5.0
 BuildRequires:	libtool
 %{?with_gimp:BuildRequires:	libusb-compat-devel}
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	scrollkeeper
-Requires:	libgphoto2 >= 2.4.1
+Requires:	libgphoto2 >= 2.5.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %if %{with gimp}
