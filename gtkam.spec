@@ -20,7 +20,7 @@ Patch3:		format-security.patch
 URL:		http://www.gphoto.org/proj/gtkam/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
-BuildRequires:	gettext-devel >= 0.14.1
+BuildRequires:	gettext-tools >= 0.14.1
 %{?with_gimp:BuildRequires:	gimp-devel >= 1:2.0}
 BuildRequires:	gnome-common
 BuildRequires:	gtk+2-devel >= 2.0.0
