@@ -20,16 +20,16 @@
  		gtk_window_set_transient_for (GTK_WINDOW (d),
  					      GTK_WINDOW (port));
  		gtk_widget_show (d);
---- gtkam-0.2.0/src/gtkam-save.c~	2010-07-10 11:51:36.000000000 +0200
-+++ gtkam-0.2.0/src/gtkam-save.c	2013-06-12 18:46:54.274846517 +0200
+--- gtkam-1.0/src/gtkam-save.c.orig	2015-08-08 11:01:10.000000000 +0200
++++ gtkam-1.0/src/gtkam-save.c	2020-09-12 08:06:07.648695751 +0200
 @@ -252,7 +252,7 @@
  static int
  save_file (GtkamSave *save, const char *filename, CameraFile *file, CameraFileType type, guint n)
  {
--	gchar *full_path, *full_filename, *dirname, *msg, *number_filename;
-+	gchar *full_path, *full_filename, *dirname, *number_filename;
+-	gchar *full_path, *full_filename, *msg, *number_filename;
++	gchar *full_path, *full_filename, *number_filename;
  	const char *mime_type;
- 	const gchar *fsel_filename, *fsel_path, *prefix, *suffix;
+ 	const gchar *fsel_path, *prefix, *suffix;
  	GtkWidget *dialog;
 @@ -296,14 +296,12 @@
  

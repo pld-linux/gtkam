@@ -7,30 +7,28 @@
 Summary:	GTKam - graphical frontend for gphoto2
 Summary(pl.UTF-8):	GTKam - graficzny interfejs do gphoto2
 Name:		gtkam
-Version:	0.2.0
-Release:	2
+Version:	1.0
+Release:	1
 License:	LGPL v2+
 Group:		X11/Applications/Graphics
 Source0:	http://downloads.sourceforge.net/gphoto/%{name}-%{version}.tar.bz2
-# Source0-md5:	a94e8615efb2c975695401af6e13ef63
+# Source0-md5:	a90cf29c7ae8fede38efb6edc3e83ed1
 Patch0:		%{name}-paths.patch
-Patch1:		%{name}-link.patch
-Patch2:		am.patch
-Patch3:		format-security.patch
+Patch1:		am.patch
+Patch2:		format-security.patch
 URL:		http://www.gphoto.org/proj/gtkam/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	gettext-tools >= 0.14.1
 %{?with_gimp:BuildRequires:	gimp-devel >= 1:2.0}
-BuildRequires:	gnome-common
 BuildRequires:	gtk+2-devel >= 2.0.0
 BuildRequires:	intltool
-%{?with_bonobo:BuildRequires:	libbonoboui-devel}
+%{?with_bonobo:BuildRequires:	libbonoboui-devel >= 2.0}
 BuildRequires:	libexif-devel >= 0.3.2
 BuildRequires:	libexif-gtk-devel
-%{?with_gnome:BuildRequires:	libgnomeui-devel}
+%{?with_gnome:BuildRequires:	libgnomeui-devel >= 2.0}
 BuildRequires:	libgphoto2-devel >= 2.5.0
-BuildRequires:	libtool
+BuildRequires:	libtool >= 2:2
 %{?with_gimp:BuildRequires:	libusb-compat-devel}
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
@@ -67,14 +65,12 @@ gphoto2.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 %build
 %{__gettextize}
 %{__intltoolize}
-%{__gnome_doc_common}
 %{__libtoolize}
-%{__aclocal} -I m4m
+%{__aclocal} -I m4 -I gphoto-m4
 %{__autoconf}
 %{__automake}
 %configure \
