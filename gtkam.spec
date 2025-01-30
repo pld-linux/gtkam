@@ -2,20 +2,19 @@
 # Conditional build:
 %bcond_without	bonobo	# don't use bonobo
 %bcond_without	gnome	# don't use GNOME to display documentation
-%bcond_without	gimp	# don't build GIMP plugin
+%bcond_with	gimp	# don't build GIMP plugin
 #
 Summary:	GTKam - graphical frontend for gphoto2
 Summary(pl.UTF-8):	GTKam - graficzny interfejs do gphoto2
 Name:		gtkam
-Version:	1.0
+Version:	1.1
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications/Graphics
 Source0:	http://downloads.sourceforge.net/gphoto/%{name}-%{version}.tar.bz2
-# Source0-md5:	a90cf29c7ae8fede38efb6edc3e83ed1
+# Source0-md5:	7c7ed105e97485a3551c13ecbc932e44
 Patch0:		%{name}-paths.patch
-Patch1:		am.patch
-Patch2:		format-security.patch
+Patch1:		intltool.patch
 URL:		http://www.gphoto.org/proj/gtkam/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
@@ -64,7 +63,6 @@ gphoto2.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 %{__gettextize}
