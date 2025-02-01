@@ -1,8 +1,8 @@
 #
 # Conditional build:
-%bcond_without	bonobo	# don't use bonobo
-%bcond_without	gnome	# don't use GNOME to display documentation
-%bcond_with	gimp	# don't build GIMP plugin
+%bcond_without	bonobo	# bonobo support
+%bcond_without	gnome	# GNOME documentation displaying support
+%bcond_with	gimp	# GIMP plugin
 #
 Summary:	GTKam - graphical frontend for gphoto2
 Summary(pl.UTF-8):	GTKam - graficzny interfejs do gphoto2
