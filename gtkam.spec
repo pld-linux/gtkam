@@ -16,9 +16,9 @@ Source0:	http://downloads.sourceforge.net/gphoto/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-paths.patch
 Patch1:		intltool.patch
 URL:		http://www.gphoto.org/proj/gtkam/
-BuildRequires:	autoconf >= 2.59
-BuildRequires:	automake >= 1:1.9
-BuildRequires:	gettext-tools >= 0.14.1
+BuildRequires:	autoconf >= 2.69
+BuildRequires:	automake >= 1:1.14.1
+BuildRequires:	gettext-tools >= 0.19.7
 %{?with_gimp:BuildRequires:	gimp-devel >= 1:2.0}
 BuildRequires:	gtk+2-devel >= 2.0.0
 BuildRequires:	intltool
